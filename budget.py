@@ -10,7 +10,7 @@ class Category:
         self.balance += amount
         
         if description == None:
-            self.ledger.append({"amount": amount})
+            self.ledger.append({"amount": amount, "description": ""})
         else:
             self.ledger.append({"amount": amount, "description": description})
     
@@ -19,7 +19,7 @@ class Category:
             self.balance -= amount
             
             if description == None:
-                self.ledger.append({"amount": -amount})
+                self.ledger.append({"amount": -amount, "description": ""})
             else:
                 self.ledger.append({"amount": -amount, "description": description})
             
@@ -50,4 +50,5 @@ def create_spend_chart(categories):
     for category in categories:
         star_qty = round((30 - len(category.name)) / 2)
         print(f"{'*' * star_qty}{category.name}{'*' * star_qty}")
-        
+        for transaction in category.ledger:
+            print(transaction["description"][0:23])
