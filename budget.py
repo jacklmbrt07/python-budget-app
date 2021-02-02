@@ -28,7 +28,7 @@ class Category:
             return False
                   
     def get_balance(self):
-        pass
+        return self.balance
     
     def transfer(self, amount, category):
         pass
