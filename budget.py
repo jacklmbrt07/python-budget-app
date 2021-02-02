@@ -47,4 +47,7 @@ class Category:
 
 
 def create_spend_chart(categories):
-    pass
+    for category in categories:
+        star_qty = round((30 - len(category.name)) / 2)
+        print(f"{'*' * star_qty}{category.name}{'*' * star_qty}")
+        
