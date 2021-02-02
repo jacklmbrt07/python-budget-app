@@ -3,18 +3,30 @@
 class Category:
     def __init__(self, name):
         self.name = name
+        self.balance = 0
         self.ledger = []
     
     def deposit(self, amount, description=None):
+        self.balance += amount
+        
         if description == None:
             self.ledger.append({"amount": amount})
         else:
             self.ledger.append({"amount": amount, "description": description})
-        print(self.ledger)
     
-    def withdraw(self, amount, balance):
-        pass
-    
+    def withdraw(self, amount, description=None):
+        if amount < self.balance:
+            self.balance -= amount
+            
+            if description == None:
+                self.ledger.append({"amount": -amount})
+            else:
+                self.ledger.append({"amount": -amount, "description": description})
+            
+            return True
+        else:
+            return False
+                  
     def get_balance(self):
         pass
     
