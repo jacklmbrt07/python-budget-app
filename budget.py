@@ -31,8 +31,13 @@ class Category:
         return self.balance
     
     def transfer(self, amount, category):
-        pass
-    
+        withdraw = self.withdraw(amount, "Transfer to {}".format(category.name))
+        if withdraw == True:
+            category.deposit(amount, "Transfer from {}".format(self.name))
+            return True
+        else:
+            return False
+            
     def check_funds(self, amount):
         pass
     
