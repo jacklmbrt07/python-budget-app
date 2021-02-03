@@ -43,6 +43,23 @@ class Category:
             return True
         else: 
             return False
+        
+    def __str__(self) -> str:
+        budget_string = []
+        
+        star_qty = round((30 - len(self.name))/2)
+        budget_string.append(f"{'*' * star_qty}{self.name}{'*' * star_qty}")
+        
+        for transaction in self.ledger:
+            description = transaction["description"][0:23]
+            amount = "{:.2f}".format(transaction["amount"])
+            budget_string.append("{:<23}{:>7}".format(description, amount))
+            
+        budget_string.append("Total: {:.2f}\n".format(self.balance))
+            
+        return "\n".join(budget_string)
+    
+    
     
 
 
@@ -51,8 +68,6 @@ def create_spend_chart(categories):
         star_qty = round((30 - len(category.name)) / 2)
         print(f"{'*' * star_qty}{category.name}{'*' * star_qty}")
         for transaction in category.ledger:
-            amount = "{:.2f}".format(transaction["amount"])
-            print("{:<23}{:>7}".format(transaction["description"][0:23], amount))
-            # print(transaction["description"][0:23])
-            # print(transaction["amount"])
-        print("\n")
+            print("{:<23}{:>7}".format(description, amount))
+        print("Total: {:.2f}\n".format(category.balance))
+        
