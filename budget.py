@@ -1,4 +1,3 @@
-# categories = [food, business, entertainment, clothing]
 
 class Category:
     def __init__(self, name):
@@ -55,7 +54,7 @@ class Category:
             amount = "{:.2f}".format(transaction["amount"])
             budget_string.append("{:<23}{:>7}".format(description, amount))
             
-        budget_string.append("Total: {:.2f}\n".format(self.balance))
+        budget_string.append("Total: {:.2f}".format(self.balance))
             
         return "\n".join(budget_string)
     
@@ -83,33 +82,8 @@ def create_spend_chart(categories):
         name = list(subtotal.items())[0][0]
         subtotal[name] = int((((subtotal[name] / total) * 10) // 1 ) * 10)
         
-    # print("Percentage spent by category")
-    # # characters per line: (3 * N) + 5      N = number of categories, (ex. 14)
-    # # changes at index 5, 8, 11
-    # print("100|          ") # {100|}{space o|space space, per category}{1space at the end}
-    # print(" 90|          ")
-    # print(" 80|          ")
-    # print(" 70|          ")
-    # print(" 60| o        ")
-    # print(" 50| o        ")
-    # print(" 40| o        ")
-    # print(" 30| o        ")
-    # print(" 20| o  o     ")
-    # print(" 10| o  o  o  ")
-    # print("  0| o  o  o  ")
-    # print("    ----------") # {4 spaces}{3 dash per category}{1 dash at the end}
-    # print("     F  C  A  ") # {4 spaces}{space Letter space, per category}{ 1 space at the end}
-    # print("     o  l  u  ") # {4 spaces}{space Letter space, per category}{ 1 space at the end}
-    # print("     o  o  t  ") # {4 spaces}{space Letter space, per category}{ 1 space at the end}
-    # print("     d  t  o  ") # {4 spaces}{space Letter space, per category}{ 1 space at the end}
-    # print("        h     ") # {4 spaces}{space Letter|space space, per category}{ 1 space at the end}
-    # print("        i     ") # {4 spaces}{space Letter|space space, per category}{ 1 space at the end}
-    # print("        n     ") # {4 spaces}{space Letter|space space, per category}{ 1 space at the end}
-    # print("        g     ") # {4 spaces}{space Letter|space space, per category}{ 1 space at the end}
-    
-        
     chart_string = ["Percentage spent by category"]
-    percentages = (100, 90, 80, 70, 60, 50, 40, 30, 20, 0)
+    percentages = (100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 0)
     for percent in percentages:
         string1 = "{:>3}|".format(str(percent))
         string2 = []
@@ -150,9 +124,7 @@ def create_spend_chart(categories):
         
         l += 1
         
-        
-    
-    # # print the chart and return one mega string
+    # print the chart and return one mega string
     return "\n".join(chart_string)
     
         
