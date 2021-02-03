@@ -123,7 +123,19 @@ def create_spend_chart(categories):
         string3 = " "
         full_string = string1 + string2 + string3
         chart_string.append(full_string)
-
+    dash_string = f"    {'-' * 3 * len(categories)}-"
+    chart_string.append(dash_string)
+    
+    category_names = [category.name for category in categories]
+    max_name_length = max(len(item) for item in category_names)
+    new_names = []
+    
+    for name in category_names:
+        word = name + (" " * (max_name_length - len(name)))
+        new_names.append(word)
+        
+        
+        
     
     # # print the chart and return one mega string
     return "\n".join(chart_string)
