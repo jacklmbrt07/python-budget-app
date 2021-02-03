@@ -65,17 +65,25 @@ class Category:
 
 def create_spend_chart(categories):
     # find the numbers first. find the sub total of all withdrawls for each category, then the total of each subtotal.
-    subtotal = []
+    subtotals = []
+    total = 0
     i = 0
     for category in categories:
-        subtotal.append(0)
+        subtotals.append({category.name: 0})
         for transaction in category.ledger:
             if transaction["amount"] < 0:
-                subtotal[i] -= transaction["amount"]
-        subtotal[i] = round(subtotal[i], 2)
+                subtotals[i][category.name] -= transaction["amount"]
+                total -= transaction["amount"]
+        subtotals[i][category.name] = round(subtotals[i][category.name], 2)
         i += 1
     
-    print(subtotal)
+    total = round(total, 2)
+    
+    for subtotal in subtotals:
+        name = list(subtotal.items())[0][0]
+        subtotal[name] = int((((subtotal[name] / total) * 10) // 1 ) * 10)
+        
+    print(subtotals)
         
                 
     
