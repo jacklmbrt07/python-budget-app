@@ -64,10 +64,5 @@ class Category:
 
 
 def create_spend_chart(categories):
-    for category in categories:
-        star_qty = round((30 - len(category.name)) / 2)
-        print(f"{'*' * star_qty}{category.name}{'*' * star_qty}")
-        for transaction in category.ledger:
-            print("{:<23}{:>7}".format(description, amount))
-        print("Total: {:.2f}\n".format(category.balance))
+    pass
         
