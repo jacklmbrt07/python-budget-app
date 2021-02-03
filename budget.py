@@ -134,6 +134,21 @@ def create_spend_chart(categories):
         word = name + (" " * (max_name_length - len(name)))
         new_names.append(word)
         
+    l = 0 # 'l' for 'letter'
+    while l < max_name_length:
+        string1 = " " * 4
+        string2 = []
+        for name in new_names:
+            letter = f" {name[l]} "
+            string2.append(letter)
+        string2 = "".join(string2)
+        string3 = " "
+        
+        full_string = string1 + string2 + string3
+        
+        chart_string.append(full_string)
+        
+        l += 1
         
         
     
