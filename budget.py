@@ -65,6 +65,21 @@ class Category:
 
 def create_spend_chart(categories):
     # find the numbers first. find the sub total of all withdrawls for each category, then the total of each subtotal.
+    subtotal = []
+    i = 0
+    for category in categories:
+        subtotal.append(0)
+        for transaction in category.ledger:
+            if transaction["amount"] < 0:
+                subtotal[i] -= transaction["amount"]
+        subtotal[i] = round(subtotal[i], 2)
+        i += 1
+    
+    print(subtotal)
+        
+                
+    
+    
     chart_string = ("Percentage spent by category")
     # print the chart and return one mega string
     return "\n".join(chart_string)

@@ -21,11 +21,11 @@ auto.withdraw(15)
 # print(clothing.get_balance())
 # print(auto.get_balance())
 
-print(food)
-print(clothing)
-print(auto)
+# print(food)
+# print(clothing)
+# print(auto)
 
-# print(create_spend_chart([food, clothing, auto]))
+print(create_spend_chart([food, clothing, auto]))
 
 # Run unit tests automatically
 # main(module='test_module', exit=False)
