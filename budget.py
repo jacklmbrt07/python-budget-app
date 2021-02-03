@@ -51,4 +51,8 @@ def create_spend_chart(categories):
         star_qty = round((30 - len(category.name)) / 2)
         print(f"{'*' * star_qty}{category.name}{'*' * star_qty}")
         for transaction in category.ledger:
-            print(transaction["description"][0:23])
+            amount = "{:.2f}".format(transaction["amount"])
+            print("{:<23}{:>7}".format(transaction["description"][0:23], amount))
+            # print(transaction["description"][0:23])
+            # print(transaction["amount"])
+        print("\n")
